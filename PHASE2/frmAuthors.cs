@@ -48,5 +48,10 @@ namespace PHASE2
         {
             foreach (Control ctrl in this.Controls) if (ctrl is TextBox txt) { txt.Clear(); }
         }
+
+        private void txtAuId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
