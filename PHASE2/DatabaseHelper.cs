@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PHASE2
 {
@@ -25,6 +26,20 @@ namespace PHASE2
 
                 conn.Open();
                 return cmd.ExecuteNonQuery();
+            }
+        }
+
+        //to pull data from dtbs
+        public static DataTable ExecuteQuery(string sql)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                conn.Open();
+                adapter.Fill(dt);
+                return dt;
             }
         }
 
@@ -66,6 +81,13 @@ namespace PHASE2
             return value ?? DBNull.Value;
         }
 
+        //just avoids putting sql code into cs files, calls existing query method vicariously
+        public static void LoadPublishers(ComboBox cbo)
+        {
+            cbo.DataSource = ExecuteQuery("SELECT pub_id, pub_name FROM publishers ORDER BY pub_id");
+            cbo.DisplayMember = "pub_name";
+            cbo.ValueMember = "pub_id";
+        }
 
 
     }

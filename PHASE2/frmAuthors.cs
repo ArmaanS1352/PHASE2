@@ -28,7 +28,7 @@ namespace PHASE2
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string auId = validator.ValidateRequiredString(txtAuId, "Author ID");
+            string auId = validator.ValidateRequiredString(mskAuId, "Author ID");
             string lastName = validator.ValidateRequiredString(txtLastName, "Last Name");
             string firstName = validator.ValidateRequiredString(txtFirstName, "First Name");
             string phone = validator.ValidateRequiredString(mskTxtPhone, "Phone");
@@ -77,7 +77,7 @@ namespace PHASE2
 
         private void ClearForm()
         {
-            txtAuId.Clear();
+            mskAuId.Clear();
             txtLastName.Clear();
             txtFirstName.Clear();
             mskTxtPhone.Clear();

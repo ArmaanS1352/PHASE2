@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtAuId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
@@ -47,16 +46,8 @@
             this.chkContract = new System.Windows.Forms.CheckBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.mskAuId = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
-            // 
-            // txtAuId
-            // 
-            this.txtAuId.Location = new System.Drawing.Point(72, 12);
-            this.txtAuId.Name = "txtAuId";
-            this.txtAuId.ReadOnly = true;
-            this.txtAuId.Size = new System.Drawing.Size(54, 20);
-            this.txtAuId.TabIndex = 0;
-            this.txtAuId.TextChanged += new System.EventHandler(this.txtAuId_TextChanged);
             // 
             // label1
             // 
@@ -149,7 +140,7 @@
             this.txtState.Location = new System.Drawing.Point(419, 55);
             this.txtState.MaxLength = 2;
             this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(59, 20);
+            this.txtState.Size = new System.Drawing.Size(28, 20);
             this.txtState.TabIndex = 10;
             // 
             // mskTxtPhone
@@ -216,11 +207,20 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // mskAuId
+            // 
+            this.mskAuId.Location = new System.Drawing.Point(72, 11);
+            this.mskAuId.Mask = "000-00-0000";
+            this.mskAuId.Name = "mskAuId";
+            this.mskAuId.Size = new System.Drawing.Size(70, 20);
+            this.mskAuId.TabIndex = 22;
+            // 
             // frmAuthors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 175);
+            this.Controls.Add(this.mskAuId);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.chkContract);
@@ -239,7 +239,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtAuId);
             this.Name = "frmAuthors";
             this.Text = "Authors";
             this.Load += new System.EventHandler(this.frmAuthors_Load);
@@ -249,8 +248,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtAuId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFirstName;
@@ -269,5 +266,6 @@
         private System.Windows.Forms.CheckBox chkContract;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.MaskedTextBox mskAuId;
     }
 }

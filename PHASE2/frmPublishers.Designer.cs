@@ -39,15 +39,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.mskPubID = new System.Windows.Forms.MaskedTextBox();
-            this.cboPubID = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 15);
+            this.label1.Location = new System.Drawing.Point(14, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 0;
@@ -55,16 +53,16 @@
             // 
             // txtPubName
             // 
-            this.txtPubName.Location = new System.Drawing.Point(242, 12);
+            this.txtPubName.Location = new System.Drawing.Point(176, 12);
             this.txtPubName.MaxLength = 40;
             this.txtPubName.Name = "txtPubName";
-            this.txtPubName.Size = new System.Drawing.Size(196, 20);
+            this.txtPubName.Size = new System.Drawing.Size(262, 20);
             this.txtPubName.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 15);
+            this.label2.Location = new System.Drawing.Point(107, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 2;
@@ -140,41 +138,21 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(83, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "OR";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
             // mskPubID
             // 
-            this.mskPubID.Location = new System.Drawing.Point(47, 12);
+            this.mskPubID.Location = new System.Drawing.Point(63, 12);
             this.mskPubID.Mask = "0000";
             this.mskPubID.Name = "mskPubID";
-            this.mskPubID.Size = new System.Drawing.Size(34, 20);
+            this.mskPubID.Size = new System.Drawing.Size(29, 20);
             this.mskPubID.TabIndex = 23;
             this.mskPubID.ValidatingType = typeof(int);
-            // 
-            // cboPubID
-            // 
-            this.cboPubID.FormattingEnabled = true;
-            this.cboPubID.Location = new System.Drawing.Point(109, 12);
-            this.cboPubID.Name = "cboPubID";
-            this.cboPubID.Size = new System.Drawing.Size(58, 21);
-            this.cboPubID.TabIndex = 24;
             // 
             // frmPublishers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 136);
-            this.Controls.Add(this.cboPubID);
             this.Controls.Add(this.mskPubID);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtCountry);
@@ -207,8 +185,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox mskPubID;
-        private System.Windows.Forms.ComboBox cboPubID;
     }
 }

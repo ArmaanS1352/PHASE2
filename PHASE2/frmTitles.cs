@@ -27,8 +27,7 @@ namespace PHASE2
             string titleId = validator.ValidateRequiredString(txtTitleID, "Title ID");
             string titleName = validator.ValidateRequiredString(txtTitle, "Title");
             string type = validator.ValidateRequiredString(txtType, "Type");
-            string publisherId = "test";
-                //validator.ValidateComboSelection(cboPub, "Publisher");
+            string publisherId = cboPub.SelectedValue.ToString();
             decimal? price = validator.ParseNullableDecimal(txtPrice, "Price");
             decimal? advance = validator.ParseNullableDecimal(txtAdvance, "Advance");
             int? royalty = validator.ParseNullableInt(txtRoyalty, "Royalty");
@@ -58,6 +57,7 @@ namespace PHASE2
                 MessageBox.Show("Title saved!", "Yippee", 
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
+                DatabaseHelper.LoadPublishers(cboPub);
             }
             catch (Exception ex) { 
                 MessageBox.Show($"Error saving title: {ex.Message}", "Error", 
@@ -88,7 +88,7 @@ namespace PHASE2
 
         private void frmTitles_Load(object sender, EventArgs e)
         {
-
+            DatabaseHelper.LoadPublishers(cboPub);
         }
     }
 }

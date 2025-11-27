@@ -108,21 +108,13 @@ namespace PHASE2
         }
 
 
-        public string ValidatePubID(ComboBox cbo, MaskedTextBox msk)
+        public string ValidatePubID(MaskedTextBox msk)
         {
-            if (cbo.SelectedItem != null && msk.MaskFull)
-            {
-                MessageBox.Show("Please EITHER select an ID OR enter a custom 99XX ID");
-                return null;
-            }
-            else if (cbo.SelectedItem == null && !msk.MaskFull)
+            
+            if (!msk.MaskFull)
             {
                 MessageBox.Show("Pub ID is a required field.");
                 return null;
-            }
-            else if (cbo.SelectedItem != null)
-            {
-                return cbo.SelectedItem.ToString();
             }
             else
             {
