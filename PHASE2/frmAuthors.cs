@@ -12,6 +12,8 @@ namespace PHASE2
 {
     public partial class frmAuthors : Form
     {
+        private Validator validator = new Validator();
+        
         public frmAuthors()
         {
             InitializeComponent();
@@ -26,27 +28,64 @@ namespace PHASE2
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string firstName = ValidateRequiredString(txtFirstName, "First Name");
-            string lastName = ValidateRequiredString(txtLastName, "Last Name");
-            if (firstName != null || lastName != null) return;
+            string auId = validator.ValidateRequiredString(txtAuId, "Author ID");
+            string lastName = validator.ValidateRequiredString(txtLastName, "Last Name");
+            string firstName = validator.ValidateRequiredString(txtFirstName, "First Name");
+            string phone = validator.ValidateRequiredString(mskTxtPhone, "Phone");
+            string? address = string.IsNullOrWhiteSpace(txtAddress.Text) ? null : txtAddress.Text;
+            string? city = string.IsNullOrWhiteSpace(txtCity.Text) ? null : txtCity.Text;
+            string? state = string.IsNullOrWhiteSpace(txtState.Text) ? null : txtState.Text;
+            string? zip = string.IsNullOrWhiteSpace(mskTxtZip.Text) ? null : mskTxtZip.Text;
+            bool contract = chkContract.Checked;
 
-        }
+            if (auId == null || lastName == null || firstName == null || phone == null) return;
 
-        private string ValidateRequiredString(TextBox txt, string fieldName)
-        {
-            if (string.IsNullOrWhiteSpace(txt.Text))
+            Author author = new Author
             {
-                MessageBox.Show($"{fieldName} is required.");
-                return null;
+                AuthorId = auId,
+                LastName = lastName,
+                FirstName = firstName,
+                Phone = phone,
+                Address = address,
+                City = city,
+                State = state,
+                Zip = zip,
+                Contract = contract
+            };
+
+            try
+            {
+                author.Save();
+                MessageBox.Show("Author saved!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm();
             }
-            return txt.Text;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving author: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         
 
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            foreach (Control ctrl in this.Controls) if (ctrl is TextBox txt) { txt.Clear(); }
+            ClearForm();
+        }
+
+        private void ClearForm()
+        {
+            txtAuId.Clear();
+            txtLastName.Clear();
+            txtFirstName.Clear();
+            mskTxtPhone.Clear();
+            txtAddress.Clear();
+            txtCity.Clear();
+            txtState.Clear();
+            mskTxtZip.Clear();
+            chkContract.Checked = false;
         }
 
         private void txtAuId_TextChanged(object sender, EventArgs e)

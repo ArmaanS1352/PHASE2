@@ -12,70 +12,83 @@ namespace PHASE2
 {
     public partial class frmTitles : Form
     {
+        private Validator validator = new Validator();
+
         public frmTitles()
         {
             InitializeComponent();
             
         }
 
-        private void frmTitles_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string title = ValidateRequiredString(txtTitle, "Title");
-            if (title == null) return;
+            string titleId = validator.ValidateRequiredString(txtTitleID, "Title ID");
+            string titleName = validator.ValidateRequiredString(txtTitle, "Title");
+            string type = validator.ValidateRequiredString(txtType, "Type");
+            string publisherId = "test";
+                //validator.ValidateComboSelection(cboPub, "Publisher");
+            decimal? price = validator.ParseNullableDecimal(txtPrice, "Price");
+            decimal? advance = validator.ParseNullableDecimal(txtAdvance, "Advance");
+            int? royalty = validator.ParseNullableInt(txtRoyalty, "Royalty");
+            int? ytdSales = validator.ParseNullableInt(txtYtdSales, "YTD Sales");
+            string notes = txtNotes.Text;
+            DateTime? pubDate = dtpPubDate.Checked ? dtpPubDate.Value : (DateTime?)null;
 
-            int? royalty = ParseNullableInt(txtRoyalty, "Royalty");
-            decimal? price = ParseNullableDecimal(txtPrice, "Price");
-            decimal? advance = ParseNullableDecimal(txtAdvance, "Advance");
+            if (titleId == null || titleName == null) return;
 
-            if (txtRoyalty.Text.Length > 0 && royalty == null) return;
-            if (txtPrice.Text.Length > 0 && price == null) return;
-            if (txtAdvance.Text.Length > 0 && advance == null) return;
-
-        }
-
-
-
-        private string ValidateRequiredString(TextBox txt, string fieldName)
-        {
-            if (string.IsNullOrWhiteSpace(txt.Text))
+            Title t = new Title
             {
-                MessageBox.Show($"{fieldName} is required.");
-                return null; 
+                TitleId = titleId,
+                TitleName = titleName,
+                Type = type,
+                PublisherId = publisherId,
+                Price = price,
+                Advance = advance,
+                Royalty = royalty,
+                YtdSales = ytdSales,
+                Notes = notes,
+                PubDate = pubDate
+            };
+
+            try
+            {
+                t.save();
+                MessageBox.Show("Title saved!", "Yippee", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm();
             }
-            return txt.Text;
+            catch (Exception ex) { 
+                MessageBox.Show($"Error saving title: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
-        private int? ParseNullableInt(TextBox txt, string fieldName)
-        {
-            if (string.IsNullOrWhiteSpace(txt.Text)) return null; 
-            if (int.TryParse(txt.Text, out int value)) return value;
-
-            MessageBox.Show($"{fieldName} must be a valid integer.");
-            return null; 
-        }
-        private decimal? ParseNullableDecimal(TextBox txt, string fieldName)
-        {
-            if (string.IsNullOrWhiteSpace(txt.Text)) return null; 
-            if (decimal.TryParse(txt.Text, out decimal value)) return value;
-
-            MessageBox.Show($"{fieldName} must be a valid decimal number.");
-            return null; 
-        }
-
-
 
 
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            foreach (Control ctrl in this.Controls) if (ctrl is TextBox txt) { txt.Clear(); }
+            ClearForm();
         }
 
+        private void ClearForm()
+        {
+            txtTitleID.Clear();
+            txtTitle.Clear();
+            txtType.Clear();
+            cboPub.SelectedIndex = -1;
+            txtPrice.Clear();
+            txtAdvance.Clear();
+            txtRoyalty.Clear();
+            txtYtdSales.Clear();
+            txtNotes.Clear();
+        }
+
+        private void frmTitles_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

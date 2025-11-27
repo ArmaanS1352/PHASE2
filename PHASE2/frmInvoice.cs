@@ -66,5 +66,10 @@ namespace PHASE2
             // Simple order number generation logic
             return DateTime.Now.Ticks.ToString().Substring(10);
         }
+
+        private void frmInvoice_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

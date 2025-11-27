@@ -102,5 +102,10 @@ namespace PHASE2
         {
             this.Close();
         }
+
+        private void frmEmployees_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

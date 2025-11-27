@@ -15,11 +15,8 @@ namespace PHASE2
         public frmMainMenu()
         {
             InitializeComponent();
-            //temp testing code to instantly launch form being tested
-            frmTitles titles = new frmTitles();
-            titles.ShowDialog();
-            frmAuthors authors = new frmAuthors();
-            authors.ShowDialog();
+            
+            
         }
 
         private void frmMainMenu_Load(object sender, EventArgs e)

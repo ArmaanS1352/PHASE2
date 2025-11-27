@@ -38,7 +38,7 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboPub = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAdvance = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpPubDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // txtTitleID
@@ -57,7 +57,6 @@
             this.txtTitleID.Location = new System.Drawing.Point(54, 12);
             this.txtTitleID.MaxLength = 6;
             this.txtTitleID.Name = "txtTitleID";
-            this.txtTitleID.ReadOnly = true;
             this.txtTitleID.Size = new System.Drawing.Size(50, 20);
             this.txtTitleID.TabIndex = 0;
             // 
@@ -139,14 +138,14 @@
             this.txtNotes.Size = new System.Drawing.Size(168, 121);
             this.txtNotes.TabIndex = 8;
             // 
-            // comboBox1
+            // cboPub
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(272, 66);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 10;
+            this.cboPub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPub.FormattingEnabled = true;
+            this.cboPub.Location = new System.Drawing.Point(272, 66);
+            this.cboPub.Name = "cboPub";
+            this.cboPub.Size = new System.Drawing.Size(100, 21);
+            this.cboPub.TabIndex = 10;
             // 
             // label6
             // 
@@ -238,20 +237,20 @@
             this.label10.TabIndex = 20;
             this.label10.Text = "PubDate:";
             // 
-            // dateTimePicker1
+            // dtpPubDate
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(96, 183);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(98, 20);
-            this.dateTimePicker1.TabIndex = 21;
+            this.dtpPubDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpPubDate.Location = new System.Drawing.Point(96, 183);
+            this.dtpPubDate.Name = "dtpPubDate";
+            this.dtpPubDate.Size = new System.Drawing.Size(98, 20);
+            this.dtpPubDate.TabIndex = 21;
             // 
             // frmTitles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 319);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpPubDate);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
@@ -262,7 +261,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtAdvance);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboPub);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.label4);
@@ -293,7 +292,7 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNotes;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboPub;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAdvance;
@@ -304,6 +303,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpPubDate;
     }
 }
