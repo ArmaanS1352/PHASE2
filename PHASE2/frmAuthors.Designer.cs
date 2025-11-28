@@ -146,7 +146,7 @@
             // mskTxtPhone
             // 
             this.mskTxtPhone.Location = new System.Drawing.Point(72, 128);
-            this.mskTxtPhone.Mask = "(999) 000-0000";
+            this.mskTxtPhone.Mask = "999-000-0000";
             this.mskTxtPhone.Name = "mskTxtPhone";
             this.mskTxtPhone.Size = new System.Drawing.Size(82, 20);
             this.mskTxtPhone.TabIndex = 12;

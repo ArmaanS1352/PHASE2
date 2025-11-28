@@ -53,6 +53,14 @@ namespace PHASE2
                 Contract = contract
             };
 
+            Console.WriteLine($"auid: {auId}");
+            Console.WriteLine($"lname: {lastName}");
+            Console.WriteLine($"fname: {firstName}");
+            Console.WriteLine($"phone: {phone}");
+            Console.WriteLine($"address: {address}");
+            Console.WriteLine($"city: {city}");
+            Console.WriteLine($"state: {state}");
+            Console.WriteLine($"zip: {zip}");
             try
             {
                 author.Save();
