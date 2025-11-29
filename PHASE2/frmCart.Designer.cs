@@ -54,6 +54,12 @@ namespace PHASE2
             this.colCartQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLineTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboStore = new System.Windows.Forms.ComboBox();
+            this.dtpOrdDate = new System.Windows.Forms.DateTimePicker();
+            this.cboPayTerms = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
@@ -68,7 +74,6 @@ namespace PHASE2
             this.lblSearch.Size = new System.Drawing.Size(67, 13);
             this.lblSearch.TabIndex = 0;
             this.lblSearch.Text = "Title Search:";
-            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
             // btnSearch
             // 
@@ -90,7 +95,6 @@ namespace PHASE2
             this.btnAddToCart.TabIndex = 7;
             this.btnAddToCart.Text = "Add";
             this.btnAddToCart.UseVisualStyleBackColor = true;
-            this.btnAddToCart.Click += new System.EventHandler(this.btnUpdateQty_Click);
             // 
             // lblFoundItems
             // 
@@ -101,7 +105,6 @@ namespace PHASE2
             this.lblFoundItems.Size = new System.Drawing.Size(65, 13);
             this.lblFoundItems.TabIndex = 10;
             this.lblFoundItems.Text = "Found Items";
-            this.lblFoundItems.Click += new System.EventHandler(this.lblFoundItems_Click);
             // 
             // dgvFoundItems
             // 
@@ -123,20 +126,18 @@ namespace PHASE2
             this.dgvFoundItems.RowHeadersWidth = 51;
             this.dgvFoundItems.RowTemplate.Height = 24;
             this.dgvFoundItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFoundItems.Size = new System.Drawing.Size(511, 67);
+            this.dgvFoundItems.Size = new System.Drawing.Size(511, 109);
             this.dgvFoundItems.TabIndex = 11;
-            this.dgvFoundItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFoundItems_CellContentClick_2);
             // 
             // lblCart
             // 
             this.lblCart.AutoSize = true;
-            this.lblCart.Location = new System.Drawing.Point(24, 151);
+            this.lblCart.Location = new System.Drawing.Point(22, 192);
             this.lblCart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCart.Name = "lblCart";
             this.lblCart.Size = new System.Drawing.Size(26, 13);
             this.lblCart.TabIndex = 12;
             this.lblCart.Text = "Cart";
-            this.lblCart.Click += new System.EventHandler(this.lblCart_Click);
             // 
             // dgvCart
             // 
@@ -149,7 +150,7 @@ namespace PHASE2
             this.colCartQty,
             this.colUnitPrice,
             this.colLineTotal});
-            this.dgvCart.Location = new System.Drawing.Point(24, 167);
+            this.dgvCart.Location = new System.Drawing.Point(24, 207);
             this.dgvCart.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCart.MultiSelect = false;
             this.dgvCart.Name = "dgvCart";
@@ -158,46 +159,43 @@ namespace PHASE2
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 24;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(511, 75);
+            this.dgvCart.Size = new System.Drawing.Size(511, 121);
             this.dgvCart.TabIndex = 13;
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
             // 
             // lblSubtotalValue
             // 
             this.lblSubtotalValue.AutoSize = true;
-            this.lblSubtotalValue.Location = new System.Drawing.Point(24, 262);
+            this.lblSubtotalValue.Location = new System.Drawing.Point(22, 368);
             this.lblSubtotalValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtotalValue.Name = "lblSubtotalValue";
             this.lblSubtotalValue.Size = new System.Drawing.Size(49, 13);
             this.lblSubtotalValue.TabIndex = 14;
             this.lblSubtotalValue.Text = "Subtotal:";
-            this.lblSubtotalValue.Click += new System.EventHandler(this.lblSubtotalValue_Click);
             // 
             // lblTaxValue
             // 
             this.lblTaxValue.AutoSize = true;
-            this.lblTaxValue.Location = new System.Drawing.Point(44, 284);
+            this.lblTaxValue.Location = new System.Drawing.Point(42, 390);
             this.lblTaxValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTaxValue.Name = "lblTaxValue";
             this.lblTaxValue.Size = new System.Drawing.Size(28, 13);
             this.lblTaxValue.TabIndex = 15;
             this.lblTaxValue.Text = "Tax:";
-            this.lblTaxValue.Click += new System.EventHandler(this.lblTaxValue_Click);
             // 
             // lblTotalValue
             // 
             this.lblTotalValue.AutoSize = true;
-            this.lblTotalValue.Location = new System.Drawing.Point(38, 307);
+            this.lblTotalValue.Location = new System.Drawing.Point(36, 413);
             this.lblTotalValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalValue.Name = "lblTotalValue";
             this.lblTotalValue.Size = new System.Drawing.Size(34, 13);
             this.lblTotalValue.TabIndex = 16;
             this.lblTotalValue.Text = "Total:";
-            this.lblTotalValue.Click += new System.EventHandler(this.lblTotalValue_Click);
             // 
             // txtSubtotal
             // 
-            this.txtSubtotal.Location = new System.Drawing.Point(80, 260);
+            this.txtSubtotal.Location = new System.Drawing.Point(78, 366);
             this.txtSubtotal.Margin = new System.Windows.Forms.Padding(2);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
@@ -206,11 +204,10 @@ namespace PHASE2
             this.txtSubtotal.TabStop = false;
             this.txtSubtotal.Text = "$0.00";
             this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSubtotal.TextChanged += new System.EventHandler(this.txtSubtotal_TextChanged);
             // 
             // txtTax
             // 
-            this.txtTax.Location = new System.Drawing.Point(80, 284);
+            this.txtTax.Location = new System.Drawing.Point(78, 390);
             this.txtTax.Margin = new System.Windows.Forms.Padding(2);
             this.txtTax.Name = "txtTax";
             this.txtTax.ReadOnly = true;
@@ -219,11 +216,10 @@ namespace PHASE2
             this.txtTax.TabStop = false;
             this.txtTax.Text = "$0.00";
             this.txtTax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTax.TextChanged += new System.EventHandler(this.txtTax_TextChanged);
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(80, 310);
+            this.txtTotal.Location = new System.Drawing.Point(78, 416);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
@@ -232,11 +228,10 @@ namespace PHASE2
             this.txtTotal.TabStop = false;
             this.txtTotal.Text = "$0.00";
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotal.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
             // 
             // btnCommitOrdeer
             // 
-            this.btnCommitOrdeer.Location = new System.Drawing.Point(232, 272);
+            this.btnCommitOrdeer.Location = new System.Drawing.Point(193, 399);
             this.btnCommitOrdeer.Margin = new System.Windows.Forms.Padding(2);
             this.btnCommitOrdeer.Name = "btnCommitOrdeer";
             this.btnCommitOrdeer.Size = new System.Drawing.Size(94, 37);
@@ -331,11 +326,73 @@ namespace PHASE2
             this.colLineTotal.Name = "colLineTotal";
             this.colLineTotal.ReadOnly = true;
             // 
+            // cboStore
+            // 
+            this.cboStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStore.FormattingEnabled = true;
+            this.cboStore.Location = new System.Drawing.Point(444, 384);
+            this.cboStore.Name = "cboStore";
+            this.cboStore.Size = new System.Drawing.Size(92, 21);
+            this.cboStore.TabIndex = 24;
+            // 
+            // dtpOrdDate
+            // 
+            this.dtpOrdDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpOrdDate.Location = new System.Drawing.Point(444, 420);
+            this.dtpOrdDate.Name = "dtpOrdDate";
+            this.dtpOrdDate.Size = new System.Drawing.Size(92, 20);
+            this.dtpOrdDate.TabIndex = 25;
+            // 
+            // cboPayTerms
+            // 
+            this.cboPayTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPayTerms.FormattingEnabled = true;
+            this.cboPayTerms.Location = new System.Drawing.Point(444, 349);
+            this.cboPayTerms.Name = "cboPayTerms";
+            this.cboPayTerms.Size = new System.Drawing.Size(92, 21);
+            this.cboPayTerms.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(397, 358);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Store:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(381, 392);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Payment:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(370, 426);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Order Date:";
+            // 
             // frmCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 337);
+            this.ClientSize = new System.Drawing.Size(629, 466);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cboPayTerms);
+            this.Controls.Add(this.dtpOrdDate);
+            this.Controls.Add(this.cboStore);
             this.Controls.Add(this.numQty);
             this.Controls.Add(this.txtTitleSearch);
             this.Controls.Add(this.btnCommitOrdeer);
@@ -390,5 +447,11 @@ namespace PHASE2
         private System.Windows.Forms.DataGridViewTextBoxColumn colCartQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLineTotal;
+        private System.Windows.Forms.ComboBox cboStore;
+        private System.Windows.Forms.DateTimePicker dtpOrdDate;
+        private System.Windows.Forms.ComboBox cboPayTerms;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
