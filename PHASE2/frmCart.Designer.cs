@@ -31,10 +31,13 @@ namespace PHASE2
         private void InitializeComponent()
         {
             this.lblSearch = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.btnAddToCart = new System.Windows.Forms.Button();
             this.lblFoundItems = new System.Windows.Forms.Label();
             this.dgvFoundItems = new System.Windows.Forms.DataGridView();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCart = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.lblSubtotalValue = new System.Windows.Forms.Label();
@@ -45,21 +48,19 @@ namespace PHASE2
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.btnCommitOrdeer = new System.Windows.Forms.Button();
             this.txtTitleSearch = new System.Windows.Forms.TextBox();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numQty = new System.Windows.Forms.NumericUpDown();
-            this.colCartTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCartQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLineTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboStore = new System.Windows.Forms.ComboBox();
             this.dtpOrdDate = new System.Windows.Forms.DateTimePicker();
             this.cboPayTerms = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.titleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCartTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCartQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLineTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
@@ -75,17 +76,6 @@ namespace PHASE2
             this.lblSearch.TabIndex = 0;
             this.lblSearch.Text = "Title Search:";
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(475, 22);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(60, 20);
-            this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnAddToCart_Click);
-            // 
             // btnAddToCart
             // 
             this.btnAddToCart.Location = new System.Drawing.Point(551, 105);
@@ -95,6 +85,7 @@ namespace PHASE2
             this.btnAddToCart.TabIndex = 7;
             this.btnAddToCart.Text = "Add";
             this.btnAddToCart.UseVisualStyleBackColor = true;
+            this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
             // 
             // lblFoundItems
             // 
@@ -117,7 +108,7 @@ namespace PHASE2
             this.colTitle,
             this.colPrice,
             this.colPub});
-            this.dgvFoundItems.Location = new System.Drawing.Point(24, 66);
+            this.dgvFoundItems.Location = new System.Drawing.Point(25, 66);
             this.dgvFoundItems.Margin = new System.Windows.Forms.Padding(2);
             this.dgvFoundItems.MultiSelect = false;
             this.dgvFoundItems.Name = "dgvFoundItems";
@@ -128,6 +119,36 @@ namespace PHASE2
             this.dgvFoundItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFoundItems.Size = new System.Drawing.Size(511, 109);
             this.dgvFoundItems.TabIndex = 11;
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "Title ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            // 
+            // colTitle
+            // 
+            this.colTitle.FillWeight = 119.5432F;
+            this.colTitle.HeaderText = "Title";
+            this.colTitle.MinimumWidth = 6;
+            this.colTitle.Name = "colTitle";
+            this.colTitle.ReadOnly = true;
+            // 
+            // colPrice
+            // 
+            this.colPrice.FillWeight = 60.9137F;
+            this.colPrice.HeaderText = "Price";
+            this.colPrice.MinimumWidth = 6;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            // 
+            // colPub
+            // 
+            this.colPub.FillWeight = 119.5432F;
+            this.colPub.HeaderText = "Publisher";
+            this.colPub.Name = "colPub";
+            this.colPub.ReadOnly = true;
             // 
             // lblCart
             // 
@@ -146,6 +167,7 @@ namespace PHASE2
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titleId,
             this.colCartTitle,
             this.colCartQty,
             this.colUnitPrice,
@@ -161,7 +183,6 @@ namespace PHASE2
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCart.Size = new System.Drawing.Size(511, 121);
             this.dgvCart.TabIndex = 13;
-            this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
             // 
             // lblSubtotalValue
             // 
@@ -248,36 +269,6 @@ namespace PHASE2
             this.txtTitleSearch.Size = new System.Drawing.Size(362, 20);
             this.txtTitleSearch.TabIndex = 22;
             // 
-            // colID
-            // 
-            this.colID.HeaderText = "Title ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            // 
-            // colTitle
-            // 
-            this.colTitle.FillWeight = 119.5432F;
-            this.colTitle.HeaderText = "Title";
-            this.colTitle.MinimumWidth = 6;
-            this.colTitle.Name = "colTitle";
-            this.colTitle.ReadOnly = true;
-            // 
-            // colPrice
-            // 
-            this.colPrice.FillWeight = 60.9137F;
-            this.colPrice.HeaderText = "Price";
-            this.colPrice.MinimumWidth = 6;
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            // 
-            // colPub
-            // 
-            this.colPub.FillWeight = 119.5432F;
-            this.colPub.HeaderText = "Publisher";
-            this.colPub.Name = "colPub";
-            this.colPub.ReadOnly = true;
-            // 
             // numQty
             // 
             this.numQty.Location = new System.Drawing.Point(553, 66);
@@ -294,37 +285,6 @@ namespace PHASE2
             0,
             0,
             0});
-            // 
-            // colCartTitle
-            // 
-            this.colCartTitle.FillWeight = 64.86485F;
-            this.colCartTitle.HeaderText = "Title";
-            this.colCartTitle.MinimumWidth = 6;
-            this.colCartTitle.Name = "colCartTitle";
-            this.colCartTitle.ReadOnly = true;
-            // 
-            // colCartQty
-            // 
-            this.colCartQty.FillWeight = 13.65663F;
-            this.colCartQty.HeaderText = "Qty";
-            this.colCartQty.MinimumWidth = 6;
-            this.colCartQty.Name = "colCartQty";
-            this.colCartQty.ReadOnly = true;
-            // 
-            // colUnitPrice
-            // 
-            this.colUnitPrice.FillWeight = 27.99814F;
-            this.colUnitPrice.HeaderText = "Unit Price";
-            this.colUnitPrice.MinimumWidth = 6;
-            this.colUnitPrice.Name = "colUnitPrice";
-            this.colUnitPrice.ReadOnly = true;
-            // 
-            // colLineTotal
-            // 
-            this.colLineTotal.FillWeight = 27.99814F;
-            this.colLineTotal.HeaderText = "Line Total";
-            this.colLineTotal.Name = "colLineTotal";
-            this.colLineTotal.ReadOnly = true;
             // 
             // cboStore
             // 
@@ -382,11 +342,61 @@ namespace PHASE2
             this.label3.TabIndex = 29;
             this.label3.Text = "Order Date:";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(472, 22);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(64, 25);
+            this.btnSearch.TabIndex = 30;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // titleId
+            // 
+            this.titleId.HeaderText = "Title ID";
+            this.titleId.Name = "titleId";
+            this.titleId.ReadOnly = true;
+            this.titleId.Visible = false;
+            // 
+            // colCartTitle
+            // 
+            this.colCartTitle.FillWeight = 64.86485F;
+            this.colCartTitle.HeaderText = "Title";
+            this.colCartTitle.MinimumWidth = 6;
+            this.colCartTitle.Name = "colCartTitle";
+            this.colCartTitle.ReadOnly = true;
+            // 
+            // colCartQty
+            // 
+            this.colCartQty.FillWeight = 13.65663F;
+            this.colCartQty.HeaderText = "Qty";
+            this.colCartQty.MinimumWidth = 6;
+            this.colCartQty.Name = "colCartQty";
+            this.colCartQty.ReadOnly = true;
+            // 
+            // colUnitPrice
+            // 
+            this.colUnitPrice.FillWeight = 27.99814F;
+            this.colUnitPrice.HeaderText = "Unit Price";
+            this.colUnitPrice.MinimumWidth = 6;
+            this.colUnitPrice.Name = "colUnitPrice";
+            this.colUnitPrice.ReadOnly = true;
+            // 
+            // colLineTotal
+            // 
+            this.colLineTotal.FillWeight = 27.99814F;
+            this.colLineTotal.HeaderText = "Line Total";
+            this.colLineTotal.Name = "colLineTotal";
+            this.colLineTotal.ReadOnly = true;
+            // 
             // frmCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 466);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -407,7 +417,6 @@ namespace PHASE2
             this.Controls.Add(this.dgvFoundItems);
             this.Controls.Add(this.lblFoundItems);
             this.Controls.Add(this.btnAddToCart);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblSearch);
             this.Name = "frmCart";
             this.Text = "Cart";
@@ -424,7 +433,6 @@ namespace PHASE2
         #endregion
 
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnAddToCart;
         private System.Windows.Forms.Label lblFoundItems;
         private System.Windows.Forms.DataGridView dgvFoundItems;
@@ -443,15 +451,17 @@ namespace PHASE2
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPub;
         private System.Windows.Forms.NumericUpDown numQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCartTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCartQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLineTotal;
         private System.Windows.Forms.ComboBox cboStore;
         private System.Windows.Forms.DateTimePicker dtpOrdDate;
         private System.Windows.Forms.ComboBox cboPayTerms;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCartTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCartQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLineTotal;
     }
 }

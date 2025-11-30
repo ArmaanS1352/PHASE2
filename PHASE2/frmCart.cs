@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,18 +26,6 @@ namespace PHASE2
             btnCommitOrdeer.Enabled = false;
         }
 
-        
-        private void btnAddToCart_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-        private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
 
         private void btnCommitOrdeer_Click(object sender, EventArgs e)
         {
@@ -50,18 +39,11 @@ namespace PHASE2
             // Loop through cart rows and calculate subtotal
             foreach (DataGridViewRow row in dgvCart.Rows)
             {
-                if (row.Cells["Price"].Value != null && row.Cells["Qty"].Value != null)
-                {
-                    decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
-                    int qty = Convert.ToInt32(row.Cells["Qty"].Value);
-                    subtotal += price * qty;
-                }
+                subtotal += Convert.ToDecimal(row.Cells["colLineTotal"].Value);
             }
 
             // Tax (adjust rate if needed)
-            decimal taxRate = 0.08m;   // 8%
-            decimal tax = subtotal * taxRate;
-
+            decimal tax = subtotal * TAX_RATE;
             decimal total = subtotal + tax;
 
             // Display results in text boxes (formatted as currency)
@@ -70,7 +52,31 @@ namespace PHASE2
             txtTotal.Text = total.ToString("C");
         }
 
-       
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string input = txtTitleSearch.Text.Trim();
+            string sql = @"SELECT title_id, title, price, pub_id
+                            FROM titles
+                            WHERE title LIKE @input + '%'";
+
+            SqlParameter[] sp = { new SqlParameter("@input", input) };
+            DataTable result = DatabaseHelper.ExecuteReader(sql, sp);
+            dgvFoundItems.DataSource = result;
+        }
+
+        private void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            if (dgvFoundItems.CurrentRow != null)
+            {
+                string titleId = dgvFoundItems.CurrentRow.Cells["colID"].Value.ToString();
+                string title = dgvFoundItems.CurrentRow.Cells["colTitle"].Value.ToString();
+                decimal price = Convert.ToDecimal(dgvFoundItems.CurrentRow.Cells["colPrice"].Value.ToString());
+                int qty = (int)numQty.Value;
+
+                dgvCart.Rows.Add(titleId, title, qty, price, qty * price);
+                UpdateTotals();
+            }
+        }
     }
 }
 
